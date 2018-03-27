@@ -15,7 +15,7 @@ namespace SketchMap {
             Gem.CreateGem(transform, new Vector2(0, 2), Color.green);
             Gem.CreateGem(transform, new Vector2(-1, 4), Color.blue);
             Gem.CreateGem(transform, new Vector2(2, 0), Color.yellow);
-            Player.CreatePlayer(transform, new Vector2(0, 0));
+            Player.CreatePlayer(transform, new Vector2(-1, 0));
         }
     }
 }
