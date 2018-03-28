@@ -2,6 +2,8 @@
 
 namespace SketchMap {
     public class Gem : MonoBehaviour {
+        public float RotationSpeed = 30;
+
         Material SelfMaterial;
 
         Material GetMaterial() {
@@ -29,13 +31,27 @@ namespace SketchMap {
         }
 
         public static Gem CreateGem(Transform Parent, Vector2 Position, Color GemColor) {
-            GameObject NewObject = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            NewObject.transform.localScale = new Vector3(.5f, .5f, .5f);
+            GameObject NewObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            NewObject.transform.localScale = new Vector3(.33f, .33f, .33f);
+            NewObject.transform.localRotation = Quaternion.Euler(45, Random.value * 360, 45);
             NewObject.transform.SetParent(Parent);
             Gem NewGem = NewObject.AddComponent<Gem>();
             NewGem.Position = Position;
             NewGem.GemColor = GemColor;
             return NewGem;
+        }
+
+        void Start() {
+            ++MapStats.RemainingGems;
+        }
+
+        void OnCollisionEnter(Collision collision) {
+            --MapStats.RemainingGems;
+            Destroy(gameObject);
+        }
+
+        void Update() {
+            transform.Rotate(Vector3.up, RotationSpeed * Time.deltaTime, Space.World);
         }
     }
 }
