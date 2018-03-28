@@ -3,6 +3,7 @@
 namespace SketchMap {
     public class DemoMap : MonoBehaviour {
         void Start() {
+            MapStats.Reset();
             Wall.CreateWall(transform, new Rect(-5.25f, -5, .25f, 10), Color.black);
             Wall.CreateWall(transform, new Rect(4.75f, -5, .25f, 10), Color.black);
             Wall.CreateWall(transform, new Rect(-5, 4.75f, 10, .25f), Color.black);
