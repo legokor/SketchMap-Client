@@ -827,6 +827,9 @@ GameObject:
   - component: {fileID: 1702790558}
   - component: {fileID: 1702790560}
   - component: {fileID: 1702790559}
+  - component: {fileID: 1702790563}
+  - component: {fileID: 1702790562}
+  - component: {fileID: 1702790561}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -878,3 +881,87 @@ MonoBehaviour:
   RotationSensitivity: 0.5
   EnableScaling: 0
   ScalingSensitivity: 0.005
+--- !u!114 &1702790561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1702790557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261392f888eff3d43a4aeb03715abbc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key: 284
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1702790560}
+        m_MethodName: ToggleScaling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1702790562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1702790557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261392f888eff3d43a4aeb03715abbc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key: 283
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1702790560}
+        m_MethodName: ToggleRotation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1702790563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1702790557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261392f888eff3d43a4aeb03715abbc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Key: 282
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1702790560}
+        m_MethodName: ToggleMovement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
