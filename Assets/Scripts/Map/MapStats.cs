@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace SketchMap {
@@ -21,6 +22,10 @@ namespace SketchMap {
 
         void Start() {
             _GemCount = GemCount;
+        }
+
+        public void Reload() {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public static void Reset() {
