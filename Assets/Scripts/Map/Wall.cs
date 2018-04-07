@@ -8,14 +8,6 @@ namespace SketchMap {
             return SelfMaterial ? SelfMaterial : SelfMaterial = GetComponent<Renderer>().material;
         }
 
-        public Rect Position {
-            set {
-                float xScale = 1 / transform.parent.localScale.x, yScale = 1 / transform.parent.localScale.y, zScale = .5f / transform.parent.localScale.z;
-                transform.localPosition = new Vector3((value.x + value.width * .5f) * xScale, (value.y + value.height * .5f) * yScale, -zScale);
-                transform.localScale = new Vector3(value.width * xScale, value.height * yScale, zScale);
-            }
-        }
-
         public Color WallColor {
             get {
                 return GetMaterial().color;
@@ -25,12 +17,14 @@ namespace SketchMap {
             }
         }
 
-        public static Wall CreateWall(Transform Parent, Rect Position, Color WallColor) {
+        public static Wall CreateWall(Transform Parent, Vector2 Start, Vector2 End, Color WallColor) {
             GameObject NewObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
             NewObject.transform.SetParent(Parent);
-            NewObject.transform.localRotation = Quaternion.identity;
+            Vector2 Direction = End - Start, Center = Start + Direction * .5f;
+            NewObject.transform.localPosition = new Vector3(Center.x, Center.y, -.5f);
+            NewObject.transform.localRotation = Quaternion.LookRotation(Direction, Vector3.back);
+            NewObject.transform.localScale = new Vector3(.1f, .5f, Direction.magnitude);
             Wall NewWall = NewObject.AddComponent<Wall>();
-            NewWall.Position = Position;
             NewWall.WallColor = WallColor;
             return NewWall;
         }
