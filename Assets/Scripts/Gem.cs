@@ -7,7 +7,7 @@ namespace SketchMap {
         Material SelfMaterial;
 
         Material GetMaterial() {
-            return SelfMaterial ? SelfMaterial : SelfMaterial = GetComponent<Renderer>().material;
+            return SelfMaterial ? SelfMaterial : SelfMaterial = GetComponentInChildren<Renderer>().material;
         }
 
         public Vector2 Position {
@@ -31,8 +31,7 @@ namespace SketchMap {
         }
 
         public static Gem CreateGem(Transform Parent, Vector2 Position, Color GemColor) {
-            GameObject NewObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            NewObject.transform.localScale = new Vector3(.33f, .33f, .33f);
+            GameObject NewObject = Instantiate(MapStats.Instance.Gem);
             NewObject.transform.localRotation = Quaternion.Euler(45, Random.value * 360, 45);
             NewObject.transform.SetParent(Parent);
             Gem NewGem = NewObject.AddComponent<Gem>();
@@ -46,8 +45,10 @@ namespace SketchMap {
         }
 
         void OnCollisionEnter(Collision collision) {
-            --MapStats.RemainingGems;
-            Destroy(gameObject);
+            if (collision.gameObject.GetComponent<Player>()) {
+                --MapStats.RemainingGems;
+                Destroy(gameObject);
+            }
         }
 
         void Update() {

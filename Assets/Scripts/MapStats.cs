@@ -4,6 +4,7 @@ using UnityEngine.UI;
 namespace SketchMap {
     public class MapStats : MonoBehaviour {
         public GameObject Table;
+        public GameObject Gem;
         public Text GemCount;
 
         static Text _GemCount;
