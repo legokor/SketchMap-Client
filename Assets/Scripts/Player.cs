@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LeapVR;
+using UnityEngine;
 
 namespace SketchMap {
     [RequireComponent(typeof(Rigidbody))]
@@ -13,7 +14,17 @@ namespace SketchMap {
             NewObject.transform.position = Parent.position + Parent.rotation *
                 new Vector3(Position.x / Parent.localScale.x, Position.y / Parent.localScale.y, -.5f / Parent.localScale.z);
             NewObject.GetComponent<Renderer>().material.color = Color.black;
-            return NewObject.AddComponent<Player>();
+            Player NewPlayer = NewObject.AddComponent<Player>();
+            KeyHandler Resetter = NewObject.AddComponent<KeyHandler>();
+            Resetter.Key = KeyCode.R;
+            Resetter.Event = new UnityEngine.Events.UnityEvent();
+            Resetter.Event.AddListener(NewPlayer.RandomizePosition);
+            return NewPlayer;
+        }
+
+        public void RandomizePosition() {
+            Vector3 Board = transform.parent.Find("Board").localScale * .5f;
+            transform.localPosition = new Vector3(Random.Range(-Board.x, Board.x), Random.Range(-Board.y, Board.y), transform.localPosition.z);
         }
 
         void Start() {
