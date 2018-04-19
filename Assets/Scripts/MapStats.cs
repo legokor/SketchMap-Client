@@ -11,6 +11,7 @@ namespace SketchMap {
         static int _RemainingGems;
 
         static GameObject GameTable;
+        static Player ActivePlayer;
 
         public static int RemainingGems {
             get {
@@ -30,11 +31,17 @@ namespace SketchMap {
             _GemCount = GemCount;
         }
 
-        Player ActivePlayer;
-
         public void RandomizePlayerPos() {
             if (ActivePlayer)
                 ActivePlayer.RandomizePosition();
+        }
+
+        public void ResetBoardTransform() {
+            if (GameTable) {
+                GameTable.transform.position = Table.transform.position;
+                GameTable.transform.rotation = Table.transform.rotation;
+                GameTable.transform.localScale = Table.transform.localScale;
+            }
         }
 
         public GameObject Reload() {
