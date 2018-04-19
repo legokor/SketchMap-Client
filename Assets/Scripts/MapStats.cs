@@ -30,12 +30,19 @@ namespace SketchMap {
             _GemCount = GemCount;
         }
 
+        Player ActivePlayer;
+
+        public void RandomizePlayerPos() {
+            if (ActivePlayer)
+                ActivePlayer.RandomizePosition();
+        }
+
         public GameObject Reload() {
             if (GameTable)
                 Destroy(GameTable);
             RemainingGems = 0;
             GameTable = Instantiate(Table);
-            Player.CreatePlayer(GameTable.transform, new Vector2(0, 0));
+            ActivePlayer = Player.CreatePlayer(GameTable.transform, new Vector2(0, 0));
             return GameTable;
         }
     }
